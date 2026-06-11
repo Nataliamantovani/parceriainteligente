@@ -11,7 +11,13 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as RiscoRouteImport } from './routes/risco'
 import { Route as ParceirosRouteImport } from './routes/parceiros'
+import { Route as PainelRouteImport } from './routes/painel'
+import { Route as MonitoramentoRouteImport } from './routes/monitoramento'
+import { Route as InteligenciaRouteImport } from './routes/inteligencia'
 import { Route as InstrumentosRouteImport } from './routes/instrumentos'
+import { Route as ImplementacaoRouteImport } from './routes/implementacao'
+import { Route as IdeobaldoRouteImport } from './routes/ideobaldo'
+import { Route as GovernancaRouteImport } from './routes/governanca'
 import { Route as AuditoriaRouteImport } from './routes/auditoria'
 import { Route as AssistenteRouteImport } from './routes/assistente'
 import { Route as IndexRouteImport } from './routes/index'
@@ -26,9 +32,39 @@ const ParceirosRoute = ParceirosRouteImport.update({
   path: '/parceiros',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PainelRoute = PainelRouteImport.update({
+  id: '/painel',
+  path: '/painel',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MonitoramentoRoute = MonitoramentoRouteImport.update({
+  id: '/monitoramento',
+  path: '/monitoramento',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InteligenciaRoute = InteligenciaRouteImport.update({
+  id: '/inteligencia',
+  path: '/inteligencia',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const InstrumentosRoute = InstrumentosRouteImport.update({
   id: '/instrumentos',
   path: '/instrumentos',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ImplementacaoRoute = ImplementacaoRouteImport.update({
+  id: '/implementacao',
+  path: '/implementacao',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const IdeobaldoRoute = IdeobaldoRouteImport.update({
+  id: '/ideobaldo',
+  path: '/ideobaldo',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GovernancaRoute = GovernancaRouteImport.update({
+  id: '/governanca',
+  path: '/governanca',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AuditoriaRoute = AuditoriaRouteImport.update({
@@ -51,7 +87,13 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/assistente': typeof AssistenteRoute
   '/auditoria': typeof AuditoriaRoute
+  '/governanca': typeof GovernancaRoute
+  '/ideobaldo': typeof IdeobaldoRoute
+  '/implementacao': typeof ImplementacaoRoute
   '/instrumentos': typeof InstrumentosRoute
+  '/inteligencia': typeof InteligenciaRoute
+  '/monitoramento': typeof MonitoramentoRoute
+  '/painel': typeof PainelRoute
   '/parceiros': typeof ParceirosRoute
   '/risco': typeof RiscoRoute
 }
@@ -59,7 +101,13 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/assistente': typeof AssistenteRoute
   '/auditoria': typeof AuditoriaRoute
+  '/governanca': typeof GovernancaRoute
+  '/ideobaldo': typeof IdeobaldoRoute
+  '/implementacao': typeof ImplementacaoRoute
   '/instrumentos': typeof InstrumentosRoute
+  '/inteligencia': typeof InteligenciaRoute
+  '/monitoramento': typeof MonitoramentoRoute
+  '/painel': typeof PainelRoute
   '/parceiros': typeof ParceirosRoute
   '/risco': typeof RiscoRoute
 }
@@ -68,7 +116,13 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/assistente': typeof AssistenteRoute
   '/auditoria': typeof AuditoriaRoute
+  '/governanca': typeof GovernancaRoute
+  '/ideobaldo': typeof IdeobaldoRoute
+  '/implementacao': typeof ImplementacaoRoute
   '/instrumentos': typeof InstrumentosRoute
+  '/inteligencia': typeof InteligenciaRoute
+  '/monitoramento': typeof MonitoramentoRoute
+  '/painel': typeof PainelRoute
   '/parceiros': typeof ParceirosRoute
   '/risco': typeof RiscoRoute
 }
@@ -78,7 +132,13 @@ export interface FileRouteTypes {
     | '/'
     | '/assistente'
     | '/auditoria'
+    | '/governanca'
+    | '/ideobaldo'
+    | '/implementacao'
     | '/instrumentos'
+    | '/inteligencia'
+    | '/monitoramento'
+    | '/painel'
     | '/parceiros'
     | '/risco'
   fileRoutesByTo: FileRoutesByTo
@@ -86,7 +146,13 @@ export interface FileRouteTypes {
     | '/'
     | '/assistente'
     | '/auditoria'
+    | '/governanca'
+    | '/ideobaldo'
+    | '/implementacao'
     | '/instrumentos'
+    | '/inteligencia'
+    | '/monitoramento'
+    | '/painel'
     | '/parceiros'
     | '/risco'
   id:
@@ -94,7 +160,13 @@ export interface FileRouteTypes {
     | '/'
     | '/assistente'
     | '/auditoria'
+    | '/governanca'
+    | '/ideobaldo'
+    | '/implementacao'
     | '/instrumentos'
+    | '/inteligencia'
+    | '/monitoramento'
+    | '/painel'
     | '/parceiros'
     | '/risco'
   fileRoutesById: FileRoutesById
@@ -103,7 +175,13 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AssistenteRoute: typeof AssistenteRoute
   AuditoriaRoute: typeof AuditoriaRoute
+  GovernancaRoute: typeof GovernancaRoute
+  IdeobaldoRoute: typeof IdeobaldoRoute
+  ImplementacaoRoute: typeof ImplementacaoRoute
   InstrumentosRoute: typeof InstrumentosRoute
+  InteligenciaRoute: typeof InteligenciaRoute
+  MonitoramentoRoute: typeof MonitoramentoRoute
+  PainelRoute: typeof PainelRoute
   ParceirosRoute: typeof ParceirosRoute
   RiscoRoute: typeof RiscoRoute
 }
@@ -124,11 +202,53 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ParceirosRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/painel': {
+      id: '/painel'
+      path: '/painel'
+      fullPath: '/painel'
+      preLoaderRoute: typeof PainelRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/monitoramento': {
+      id: '/monitoramento'
+      path: '/monitoramento'
+      fullPath: '/monitoramento'
+      preLoaderRoute: typeof MonitoramentoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/inteligencia': {
+      id: '/inteligencia'
+      path: '/inteligencia'
+      fullPath: '/inteligencia'
+      preLoaderRoute: typeof InteligenciaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/instrumentos': {
       id: '/instrumentos'
       path: '/instrumentos'
       fullPath: '/instrumentos'
       preLoaderRoute: typeof InstrumentosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/implementacao': {
+      id: '/implementacao'
+      path: '/implementacao'
+      fullPath: '/implementacao'
+      preLoaderRoute: typeof ImplementacaoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ideobaldo': {
+      id: '/ideobaldo'
+      path: '/ideobaldo'
+      fullPath: '/ideobaldo'
+      preLoaderRoute: typeof IdeobaldoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/governanca': {
+      id: '/governanca'
+      path: '/governanca'
+      fullPath: '/governanca'
+      preLoaderRoute: typeof GovernancaRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/auditoria': {
@@ -159,7 +279,13 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AssistenteRoute: AssistenteRoute,
   AuditoriaRoute: AuditoriaRoute,
+  GovernancaRoute: GovernancaRoute,
+  IdeobaldoRoute: IdeobaldoRoute,
+  ImplementacaoRoute: ImplementacaoRoute,
   InstrumentosRoute: InstrumentosRoute,
+  InteligenciaRoute: InteligenciaRoute,
+  MonitoramentoRoute: MonitoramentoRoute,
+  PainelRoute: PainelRoute,
   ParceirosRoute: ParceirosRoute,
   RiscoRoute: RiscoRoute,
 }
