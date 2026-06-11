@@ -9,12 +9,36 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as RiscoRouteImport } from './routes/risco'
+import { Route as ParceirosRouteImport } from './routes/parceiros'
 import { Route as InstrumentosRouteImport } from './routes/instrumentos'
+import { Route as AuditoriaRouteImport } from './routes/auditoria'
+import { Route as AssistenteRouteImport } from './routes/assistente'
 import { Route as IndexRouteImport } from './routes/index'
 
+const RiscoRoute = RiscoRouteImport.update({
+  id: '/risco',
+  path: '/risco',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ParceirosRoute = ParceirosRouteImport.update({
+  id: '/parceiros',
+  path: '/parceiros',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const InstrumentosRoute = InstrumentosRouteImport.update({
   id: '/instrumentos',
   path: '/instrumentos',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuditoriaRoute = AuditoriaRouteImport.update({
+  id: '/auditoria',
+  path: '/auditoria',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AssistenteRoute = AssistenteRouteImport.update({
+  id: '/assistente',
+  path: '/assistente',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -25,37 +49,100 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/assistente': typeof AssistenteRoute
+  '/auditoria': typeof AuditoriaRoute
   '/instrumentos': typeof InstrumentosRoute
+  '/parceiros': typeof ParceirosRoute
+  '/risco': typeof RiscoRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/assistente': typeof AssistenteRoute
+  '/auditoria': typeof AuditoriaRoute
   '/instrumentos': typeof InstrumentosRoute
+  '/parceiros': typeof ParceirosRoute
+  '/risco': typeof RiscoRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/assistente': typeof AssistenteRoute
+  '/auditoria': typeof AuditoriaRoute
   '/instrumentos': typeof InstrumentosRoute
+  '/parceiros': typeof ParceirosRoute
+  '/risco': typeof RiscoRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/instrumentos'
+  fullPaths:
+    | '/'
+    | '/assistente'
+    | '/auditoria'
+    | '/instrumentos'
+    | '/parceiros'
+    | '/risco'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/instrumentos'
-  id: '__root__' | '/' | '/instrumentos'
+  to:
+    | '/'
+    | '/assistente'
+    | '/auditoria'
+    | '/instrumentos'
+    | '/parceiros'
+    | '/risco'
+  id:
+    | '__root__'
+    | '/'
+    | '/assistente'
+    | '/auditoria'
+    | '/instrumentos'
+    | '/parceiros'
+    | '/risco'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AssistenteRoute: typeof AssistenteRoute
+  AuditoriaRoute: typeof AuditoriaRoute
   InstrumentosRoute: typeof InstrumentosRoute
+  ParceirosRoute: typeof ParceirosRoute
+  RiscoRoute: typeof RiscoRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/risco': {
+      id: '/risco'
+      path: '/risco'
+      fullPath: '/risco'
+      preLoaderRoute: typeof RiscoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/parceiros': {
+      id: '/parceiros'
+      path: '/parceiros'
+      fullPath: '/parceiros'
+      preLoaderRoute: typeof ParceirosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/instrumentos': {
       id: '/instrumentos'
       path: '/instrumentos'
       fullPath: '/instrumentos'
       preLoaderRoute: typeof InstrumentosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auditoria': {
+      id: '/auditoria'
+      path: '/auditoria'
+      fullPath: '/auditoria'
+      preLoaderRoute: typeof AuditoriaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/assistente': {
+      id: '/assistente'
+      path: '/assistente'
+      fullPath: '/assistente'
+      preLoaderRoute: typeof AssistenteRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -70,8 +157,22 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AssistenteRoute: AssistenteRoute,
+  AuditoriaRoute: AuditoriaRoute,
   InstrumentosRoute: InstrumentosRoute,
+  ParceirosRoute: ParceirosRoute,
+  RiscoRoute: RiscoRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
