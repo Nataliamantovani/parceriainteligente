@@ -4,6 +4,16 @@
 
 @custom-variant dark (&:is(.dark *));
 
+@theme {
+  --color-gov-navy: #0F172A;
+  --color-gov-blue: #2563EB;
+  --color-risk-high: #E11D48;
+  --color-risk-mid: #F59E0B;
+  --color-risk-low: #10B981;
+  --font-sans: 'Inter', sans-serif;
+  --font-display: 'Outfit', sans-serif;
+}
+
 /*
  * Design system definition.
  *
