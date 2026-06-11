@@ -3,15 +3,18 @@ import type { ReactNode } from "react";
 import { ChevronDown } from "lucide-react";
 import { useState } from "react";
 
-export const navGroups = [
+type NavItem = { label: string; to: string; hash?: string };
+type NavGroup = { label: string; to: string; items: NavItem[] };
+
+export const navGroups: NavGroup[] = [
   {
     label: "Governança",
     to: "/governanca",
     items: [
       { label: "Metodologia", to: "/governanca" },
-      { label: "Ciclo de Vida", to: "/governanca#ciclo" },
-      { label: "Papéis e Responsabilidades", to: "/governanca#papeis" },
-      { label: "Normativos", to: "/governanca#normativos" },
+      { label: "Ciclo de Vida", to: "/governanca", hash: "ciclo" },
+      { label: "Papéis e Responsabilidades", to: "/governanca", hash: "papeis" },
+      { label: "Normativos", to: "/governanca", hash: "normativos" },
     ],
   },
   {
@@ -21,7 +24,7 @@ export const navGroups = [
       { label: "Cadastro Único", to: "/instrumentos" },
       { label: "Parceiros", to: "/parceiros" },
       { label: "Instrumentos", to: "/instrumentos" },
-      { label: "Vigências", to: "/instrumentos#vigencias" },
+      { label: "Vigências", to: "/instrumentos" },
     ],
   },
   {
@@ -29,9 +32,9 @@ export const navGroups = [
     to: "/risco",
     items: [
       { label: "Indicadores de Risco", to: "/risco" },
-      { label: "Conformidade", to: "/risco#conformidade" },
+      { label: "Conformidade", to: "/risco" },
       { label: "Histórico Sancionador", to: "/parceiros" },
-      { label: "Recomendações de Acompanhamento", to: "/risco#recomendacoes" },
+      { label: "Recomendações de Acompanhamento", to: "/risco" },
     ],
   },
   {
@@ -39,9 +42,9 @@ export const navGroups = [
     to: "/monitoramento",
     items: [
       { label: "Monitoramento", to: "/monitoramento" },
-      { label: "Fiscalizações", to: "/monitoramento#fiscalizacoes" },
-      { label: "Evidências", to: "/monitoramento#evidencias" },
-      { label: "Medidas Corretivas", to: "/monitoramento#medidas" },
+      { label: "Fiscalizações", to: "/monitoramento", hash: "fiscalizacoes" },
+      { label: "Evidências", to: "/monitoramento", hash: "evidencias" },
+      { label: "Medidas Corretivas", to: "/monitoramento", hash: "medidas" },
     ],
   },
   {
@@ -49,9 +52,9 @@ export const navGroups = [
     to: "/inteligencia",
     items: [
       { label: "Lições Aprendidas", to: "/inteligencia" },
-      { label: "Boas Práticas", to: "/inteligencia#boas-praticas" },
-      { label: "Base de Conhecimento", to: "/inteligencia#base" },
-      { label: "Memória Institucional", to: "/inteligencia#memoria" },
+      { label: "Boas Práticas", to: "/inteligencia", hash: "boas-praticas" },
+      { label: "Base de Conhecimento", to: "/inteligencia", hash: "base" },
+      { label: "Memória Institucional", to: "/inteligencia", hash: "memoria" },
     ],
   },
   {
@@ -61,7 +64,7 @@ export const navGroups = [
       { label: "Ideobaldo", to: "/ideobaldo" },
       { label: "Motor de Risco", to: "/risco" },
       { label: "Auditoria Inteligente", to: "/auditoria" },
-      { label: "Relatórios Inteligentes", to: "/ideobaldo#relatorios" },
+      { label: "Relatórios Inteligentes", to: "/ideobaldo", hash: "relatorios" },
     ],
   },
   {
@@ -69,12 +72,12 @@ export const navGroups = [
     to: "/painel",
     items: [
       { label: "Indicadores", to: "/painel" },
-      { label: "Alertas", to: "/painel#alertas" },
-      { label: "Instrumentos Prioritários", to: "/painel#prioritarios" },
-      { label: "Resultados", to: "/painel#resultados" },
+      { label: "Alertas", to: "/painel" },
+      { label: "Instrumentos Prioritários", to: "/painel", hash: "prioritarios" },
+      { label: "Resultados", to: "/painel", hash: "resultados" },
     ],
   },
-] as const;
+];
 
 export function TopNav({ variant = "institutional" }: { variant?: "institutional" | "app" }) {
   const [openIdx, setOpenIdx] = useState<number | null>(null);
@@ -138,6 +141,7 @@ export function TopNav({ variant = "institutional" }: { variant?: "institutional
                         <Link
                           key={it.label}
                           to={it.to}
+                          hash={it.hash}
                           className="block px-4 py-2 text-xs font-medium text-slate-700 hover:bg-slate-50 hover:text-gov-blue"
                         >
                           {it.label}
