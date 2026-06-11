@@ -42,12 +42,12 @@ export function DashboardLayout({ children }: { children: ReactNode }) {
                   {isOpen && (
                     <div className="ml-5 mt-1 mb-2 border-l border-slate-100 space-y-0.5">
                       {g.items.map((it) => {
-                        const path = it.to.split("#")[0];
-                        const active = pathname === path;
+                        const active = pathname === it.to;
                         return (
                           <Link
                             key={it.label}
                             to={it.to}
+                            hash={it.hash}
                             className={
                               "block pl-4 pr-3 py-1.5 text-xs font-medium border-l-2 transition-colors " +
                               (active
