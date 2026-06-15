@@ -11,6 +11,8 @@ import {
   CheckCircle2,
   BarChart3,
   Network,
+  Scale,
+  Landmark,
 } from "lucide-react";
 
 export const Route = createFileRoute("/")({
@@ -34,11 +36,11 @@ export const Route = createFileRoute("/")({
 
 const pillars = [
   { icon: Database, title: "Dados Estruturados", desc: "Cadastro único de instrumentos, parceiros e vigências com qualidade auditável." },
+  { icon: Landmark, title: "Governança", desc: "Padronização do ciclo de vida dos instrumentos com fases, marcos e papéis claros." },
   { icon: Shield, title: "Gestão de Riscos", desc: "Indicadores de risco e integridade orientam o monitoramento, sem ranqueamento punitivo." },
-  { icon: Brain, title: "Inteligência Artificial", desc: "Motor de risco, auditoria inteligente e assistente virtual especializado." },
-  { icon: Eye, title: "Fiscalização por Evidências", desc: "Acompanhamento de obrigações baseado em dados e medidas corretivas rastreáveis." },
-  { icon: BookOpen, title: "Conhecimento Institucional", desc: "Lições aprendidas, boas práticas e memória organizacional preservadas." },
-  { icon: Network, title: "Aprendizado Organizacional", desc: "A plataforma evolui com a prática e devolve recomendações aos gestores." },
+  { icon: BookOpen, title: "Aprendizado Institucional", desc: "Lições aprendidas, boas práticas e memória organizacional preservadas." },
+  { icon: Eye, title: "Transparência", desc: "Trilhas auditáveis, dados estruturados e evidências acessíveis ao controle." },
+  { icon: Brain, title: "Inteligência Artificial Responsável", desc: "IA como apoio à governança e à decisão — nunca como substituto do julgamento humano." },
 ];
 
 function Landing() {
@@ -53,30 +55,30 @@ function Landing() {
           <div>
             <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3 py-1 text-[11px] font-semibold uppercase tracking-widest text-white/80">
               <span className="size-1.5 rounded-full bg-emerald-400" />
-              Governo Digital · Plataforma Nacional
+              Plataforma Nacional · Governança Pública Baseada em Evidências
             </div>
             <h1 className="mt-6 font-display text-4xl md:text-5xl xl:text-6xl font-bold tracking-tight leading-[1.05]">
-              Plataforma Nacional de Governança Inteligente de Instrumentos de Cooperação
+              Parceria Inteligente
             </h1>
+            <div className="mt-3 font-display text-lg md:text-xl font-semibold text-white/80 max-w-2xl">
+              Plataforma Nacional de Governança das Parcerias Públicas — orientada a dados, evidências, riscos e aprendizado institucional.
+            </div>
             <p className="mt-6 text-base md:text-lg text-white/70 leading-relaxed max-w-2xl">
-              Transformando a governança dos instrumentos de cooperação de um modelo centrado em documentos para um modelo centrado em <strong className="text-white">dados, evidências e aprendizado institucional</strong>.
-            </p>
-            <p className="mt-5 text-sm text-white/60 leading-relaxed max-w-2xl">
-              A plataforma apoia órgãos públicos na gestão de acordos, convênios e parcerias por meio de dados estruturados, gestão de riscos, inteligência artificial e governança baseada em evidências.
+              Uma infraestrutura digital de Estado para fortalecer a <strong className="text-white">governança</strong>, qualificar a <strong className="text-white">fiscalização por evidências</strong> e preservar o <strong className="text-white">conhecimento institucional</strong> nas parcerias da Administração Pública.
             </p>
 
             <div className="mt-8 flex flex-wrap items-center gap-3">
               <Link
-                to="/painel"
+                to="/por-que"
                 className="inline-flex items-center gap-2 rounded-md bg-gov-blue px-5 py-3 text-sm font-semibold text-white hover:bg-blue-500 transition-colors"
               >
-                Acessar Painel Executivo <ArrowRight className="size-4" />
+                Por que esta plataforma existe? <ArrowRight className="size-4" />
               </Link>
               <Link
-                to="/implementacao"
+                to="/painel"
                 className="inline-flex items-center gap-2 rounded-md border border-white/20 px-5 py-3 text-sm font-semibold text-white hover:bg-white/10 transition-colors"
               >
-                Roadmap de Implementação
+                Acessar Painel Executivo
               </Link>
             </div>
 
@@ -100,13 +102,13 @@ function Landing() {
             <div className="absolute -inset-4 rounded-3xl bg-gov-blue/10 blur-2xl -z-10" />
             <div className="rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur p-5 shadow-2xl">
               <div className="flex items-center justify-between text-[10px] uppercase tracking-widest text-white/50">
-                <span>Centro de Comando · Tempo Real</span>
+                <span>Observatório de Parcerias · Tempo Real</span>
                 <span className="flex items-center gap-1.5"><span className="size-1.5 rounded-full bg-emerald-400 animate-pulse" /> Operacional</span>
               </div>
               <div className="mt-4 grid grid-cols-3 gap-3">
                 {[
                   { k: "1.248", l: "Instrumentos ativos" },
-                  { k: "R$ 4,2 Bi", l: "Sob gestão" },
+                  { k: "86", l: "Lições aprendidas" },
                   { k: "94,2%", l: "Conformidade" },
                 ].map((s) => (
                   <div key={s.l} className="rounded-lg border border-white/10 bg-white/5 p-3">
@@ -130,12 +132,40 @@ function Landing() {
                   </div>
                 ))}
               </div>
-              <div className="mt-3 rounded-lg border border-gov-blue/30 bg-gov-blue/10 p-3 text-xs text-white/80">
-                <div className="flex items-center gap-2 text-[10px] uppercase tracking-widest text-gov-blue mb-1.5">
-                  <Sparkles className="size-3" /> Ideobaldo
+              <div className="mt-3 rounded-lg border border-emerald-400/20 bg-emerald-400/5 p-3 text-xs text-white/80">
+                <div className="flex items-center gap-2 text-[10px] uppercase tracking-widest text-emerald-300 mb-1.5">
+                  <BookOpen className="size-3" /> Aprendizado institucional
                 </div>
-                Detectei um padrão de vigências críticas concentrado no Q4. Sugiro priorizar o monitoramento de 24 instrumentos.
+                Padrão recorrente identificado a partir de 12 instrumentos: cláusulas de repasse mensal reduziram inconformidades em 60%. Recomendação incorporada à base de conhecimento.
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* TRANSFORMAÇÃO DA GOVERNANÇA */}
+      <section className="border-t border-white/10">
+        <div className="mx-auto max-w-[1400px] px-6 py-20 grid lg:grid-cols-[1fr_1fr] gap-12 items-start">
+          <div>
+            <div className="text-[11px] font-bold uppercase tracking-widest text-emerald-300">Posicionamento</div>
+            <h2 className="font-display text-3xl md:text-4xl font-bold mt-3 leading-tight">
+              Transformando a Governança das Parcerias Públicas
+            </h2>
+          </div>
+          <div className="space-y-5 text-white/75 leading-relaxed">
+            <p>
+              A Administração Pública celebra milhares de acordos, convênios, termos de cooperação e outros instrumentos de parceria para viabilizar políticas públicas e ampliar a capacidade de atuação do Estado.
+            </p>
+            <p>
+              Entretanto, a gestão dessas relações ainda depende de controles dispersos, processos manuais e conhecimento fragmentado.
+            </p>
+            <p className="text-white">
+              A Plataforma Parceria Inteligente busca transformar a governança dos instrumentos de cooperação de um modelo centrado em <em>documentos</em> para um modelo centrado em <strong>dados, evidências e aprendizado institucional</strong>.
+            </p>
+            <div className="pt-2">
+              <Link to="/por-que" className="inline-flex items-center gap-2 text-sm font-semibold text-gov-blue hover:underline">
+                Conheça o problema público que resolvemos <ArrowRight className="size-4" />
+              </Link>
             </div>
           </div>
         </div>
@@ -145,23 +175,25 @@ function Landing() {
       <section className="border-t border-white/10 bg-black/20">
         <div className="mx-auto max-w-[1400px] px-6 py-20">
           <div className="max-w-3xl">
-            <div className="text-[11px] font-bold uppercase tracking-widest text-gov-blue">Infraestrutura Digital de Governança</div>
+            <div className="text-[11px] font-bold uppercase tracking-widest text-gov-blue">Pilares Institucionais</div>
             <h2 className="font-display text-3xl md:text-4xl font-bold mt-3">
-              Não apenas um sistema operacional — uma plataforma de Estado.
+              Seis pilares sustentam a governança das parcerias públicas.
             </h2>
             <p className="text-white/60 mt-4 leading-relaxed">
-              Seis pilares estruturam a forma como acordos, convênios e parcerias são geridos: dados, riscos, inteligência, evidências, conhecimento e aprendizado.
+              Governança, dados estruturados, gestão de riscos, aprendizado institucional e transparência formam o núcleo da plataforma. A Inteligência Artificial atua como camada de apoio — responsável, auditável e a serviço da decisão pública.
             </p>
           </div>
           <div className="mt-12 grid md:grid-cols-2 lg:grid-cols-3 gap-4">
             {pillars.map((p) => {
               const Icon = p.icon;
+              const isAI = p.title.startsWith("Inteligência Artificial");
               return (
-                <div key={p.title} className="group rounded-2xl border border-white/10 bg-white/[0.02] p-6 hover:bg-white/[0.05] hover:border-gov-blue/40 transition-colors">
-                  <div className="size-10 rounded-lg bg-gov-blue/15 grid place-items-center text-gov-blue group-hover:bg-gov-blue group-hover:text-white transition-colors">
+                <div key={p.title} className={"group rounded-2xl border p-6 transition-colors " + (isAI ? "border-dashed border-white/15 bg-white/[0.01] hover:bg-white/[0.04]" : "border-white/10 bg-white/[0.02] hover:bg-white/[0.05] hover:border-gov-blue/40")}>
+                  <div className={"size-10 rounded-lg grid place-items-center transition-colors " + (isAI ? "bg-white/5 text-white/70" : "bg-gov-blue/15 text-gov-blue group-hover:bg-gov-blue group-hover:text-white")}>
                     <Icon className="size-5" />
                   </div>
                   <h3 className="mt-4 font-display text-lg font-bold">{p.title}</h3>
+                  {isAI && <div className="mt-1 text-[10px] uppercase tracking-widest text-white/40">Camada de apoio</div>}
                   <p className="mt-2 text-sm text-white/60 leading-relaxed">{p.desc}</p>
                 </div>
               );
