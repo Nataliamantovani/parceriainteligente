@@ -28,7 +28,7 @@ export const navGroups: NavGroup[] = [
     ],
   },
   {
-    label: "Riscos e Integridade",
+    label: "Governança, Riscos e Integridade",
     to: "/risco",
     items: [
       { label: "Indicadores de Risco", to: "/risco" },
@@ -53,18 +53,21 @@ export const navGroups: NavGroup[] = [
     items: [
       { label: "Lições Aprendidas", to: "/inteligencia" },
       { label: "Boas Práticas", to: "/inteligencia", hash: "boas-praticas" },
-      { label: "Base de Conhecimento", to: "/inteligencia", hash: "base" },
+      { label: "Casos de Sucesso", to: "/inteligencia", hash: "casos" },
+      { label: "Recomendações Institucionais", to: "/inteligencia", hash: "recomendacoes" },
       { label: "Memória Institucional", to: "/inteligencia", hash: "memoria" },
+      { label: "Base de Conhecimento", to: "/inteligencia", hash: "base" },
     ],
   },
   {
-    label: "IA para Governança",
-    to: "/ideobaldo",
+    label: "Valor Público",
+    to: "/valor-publico",
     items: [
-      { label: "Ideobaldo", to: "/ideobaldo" },
-      { label: "Motor de Risco", to: "/risco" },
-      { label: "Auditoria Inteligente", to: "/auditoria" },
-      { label: "Relatórios Inteligentes", to: "/ideobaldo", hash: "relatorios" },
+      { label: "Benefícios Gerados", to: "/valor-publico" },
+      { label: "Indicadores de Resultado", to: "/valor-publico", hash: "indicadores" },
+      { label: "Economia e Eficiência", to: "/valor-publico", hash: "economia" },
+      { label: "Transparência", to: "/valor-publico", hash: "transparencia" },
+      { label: "Capacidade Institucional", to: "/valor-publico", hash: "capacidade" },
     ],
   },
   {
@@ -75,6 +78,16 @@ export const navGroups: NavGroup[] = [
       { label: "Alertas", to: "/painel" },
       { label: "Instrumentos Prioritários", to: "/painel", hash: "prioritarios" },
       { label: "Resultados", to: "/painel", hash: "resultados" },
+    ],
+  },
+  {
+    label: "IA de Apoio",
+    to: "/ideobaldo",
+    items: [
+      { label: "Assistente Ideobaldo", to: "/ideobaldo" },
+      { label: "Motor de Risco", to: "/risco" },
+      { label: "Auditoria Inteligente", to: "/auditoria" },
+      { label: "Relatórios Inteligentes", to: "/ideobaldo", hash: "relatorios" },
     ],
   },
 ];
