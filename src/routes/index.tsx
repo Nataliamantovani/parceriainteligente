@@ -10,7 +10,6 @@ import {
   Sparkles,
   CheckCircle2,
   BarChart3,
-  Network,
   Landmark,
 } from "lucide-react";
 
