@@ -11,7 +11,6 @@ import {
   CheckCircle2,
   BarChart3,
   Network,
-  Scale,
   Landmark,
 } from "lucide-react";
 
@@ -266,11 +265,11 @@ function Landing() {
               <Link to="/painel" className="inline-flex items-center justify-between gap-3 rounded-xl bg-white text-gov-navy px-5 py-3 text-sm font-semibold hover:bg-slate-100">
                 Painel Executivo <ArrowRight className="size-4" />
               </Link>
-              <Link to="/implementacao" className="inline-flex items-center justify-between gap-3 rounded-xl bg-white/10 border border-white/20 px-5 py-3 text-sm font-semibold hover:bg-white/20">
-                Implementação Progressiva <ArrowRight className="size-4" />
+              <Link to="/inteligencia" className="inline-flex items-center justify-between gap-3 rounded-xl bg-white/10 border border-white/20 px-5 py-3 text-sm font-semibold hover:bg-white/20">
+                Inteligência Institucional <ArrowRight className="size-4" />
               </Link>
-              <Link to="/ideobaldo" className="inline-flex items-center justify-between gap-3 rounded-xl bg-white/10 border border-white/20 px-5 py-3 text-sm font-semibold hover:bg-white/20">
-                Conversar com o Ideobaldo <ArrowRight className="size-4" />
+              <Link to="/valor-publico" className="inline-flex items-center justify-between gap-3 rounded-xl bg-white/10 border border-white/20 px-5 py-3 text-sm font-semibold hover:bg-white/20">
+                Valor Público <ArrowRight className="size-4" />
               </Link>
             </div>
           </div>
