@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as RiscoRouteImport } from './routes/risco'
+import { Route as PorQueRouteImport } from './routes/por-que'
 import { Route as ParceirosRouteImport } from './routes/parceiros'
 import { Route as PainelRouteImport } from './routes/painel'
 import { Route as MonitoramentoRouteImport } from './routes/monitoramento'
@@ -25,6 +26,11 @@ import { Route as IndexRouteImport } from './routes/index'
 const RiscoRoute = RiscoRouteImport.update({
   id: '/risco',
   path: '/risco',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PorQueRoute = PorQueRouteImport.update({
+  id: '/por-que',
+  path: '/por-que',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ParceirosRoute = ParceirosRouteImport.update({
@@ -95,6 +101,7 @@ export interface FileRoutesByFullPath {
   '/monitoramento': typeof MonitoramentoRoute
   '/painel': typeof PainelRoute
   '/parceiros': typeof ParceirosRoute
+  '/por-que': typeof PorQueRoute
   '/risco': typeof RiscoRoute
 }
 export interface FileRoutesByTo {
@@ -109,6 +116,7 @@ export interface FileRoutesByTo {
   '/monitoramento': typeof MonitoramentoRoute
   '/painel': typeof PainelRoute
   '/parceiros': typeof ParceirosRoute
+  '/por-que': typeof PorQueRoute
   '/risco': typeof RiscoRoute
 }
 export interface FileRoutesById {
@@ -124,6 +132,7 @@ export interface FileRoutesById {
   '/monitoramento': typeof MonitoramentoRoute
   '/painel': typeof PainelRoute
   '/parceiros': typeof ParceirosRoute
+  '/por-que': typeof PorQueRoute
   '/risco': typeof RiscoRoute
 }
 export interface FileRouteTypes {
@@ -140,6 +149,7 @@ export interface FileRouteTypes {
     | '/monitoramento'
     | '/painel'
     | '/parceiros'
+    | '/por-que'
     | '/risco'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -154,6 +164,7 @@ export interface FileRouteTypes {
     | '/monitoramento'
     | '/painel'
     | '/parceiros'
+    | '/por-que'
     | '/risco'
   id:
     | '__root__'
@@ -168,6 +179,7 @@ export interface FileRouteTypes {
     | '/monitoramento'
     | '/painel'
     | '/parceiros'
+    | '/por-que'
     | '/risco'
   fileRoutesById: FileRoutesById
 }
@@ -183,6 +195,7 @@ export interface RootRouteChildren {
   MonitoramentoRoute: typeof MonitoramentoRoute
   PainelRoute: typeof PainelRoute
   ParceirosRoute: typeof ParceirosRoute
+  PorQueRoute: typeof PorQueRoute
   RiscoRoute: typeof RiscoRoute
 }
 
@@ -193,6 +206,13 @@ declare module '@tanstack/react-router' {
       path: '/risco'
       fullPath: '/risco'
       preLoaderRoute: typeof RiscoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/por-que': {
+      id: '/por-que'
+      path: '/por-que'
+      fullPath: '/por-que'
+      preLoaderRoute: typeof PorQueRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/parceiros': {
@@ -287,6 +307,7 @@ const rootRouteChildren: RootRouteChildren = {
   MonitoramentoRoute: MonitoramentoRoute,
   PainelRoute: PainelRoute,
   ParceirosRoute: ParceirosRoute,
+  PorQueRoute: PorQueRoute,
   RiscoRoute: RiscoRoute,
 }
 export const routeTree = rootRouteImport
