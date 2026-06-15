@@ -68,16 +68,16 @@ export function DashboardLayout({ children }: { children: ReactNode }) {
 
           <div className="pt-6 px-1">
             <div className="rounded-xl bg-gov-navy p-4 text-white">
-              <p className="text-[10px] font-bold uppercase tracking-widest text-white/50 mb-2">IA Ativa</p>
+              <p className="text-[10px] font-bold uppercase tracking-widest text-white/50 mb-2">Governança em operação</p>
               <div className="flex items-center gap-2">
                 <div className="size-2 rounded-full bg-emerald-400 animate-pulse" />
-                <span className="text-sm font-semibold">Ideobaldo · v2.4</span>
+                <span className="text-sm font-semibold">1.248 instrumentos ativos</span>
               </div>
               <p className="mt-3 text-[11px] text-white/60 leading-relaxed">
-                Monitorando 1.248 instrumentos em tempo real.
+                Dados estruturados, evidências auditáveis e aprendizado institucional contínuo.
               </p>
-              <Link to="/ideobaldo" className="mt-3 inline-block text-[11px] font-semibold text-gov-blue hover:underline">
-                Falar com Ideobaldo →
+              <Link to="/valor-publico" className="mt-3 inline-block text-[11px] font-semibold text-gov-blue hover:underline">
+                Ver valor público gerado →
               </Link>
             </div>
           </div>

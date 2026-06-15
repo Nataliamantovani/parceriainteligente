@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as ValorPublicoRouteImport } from './routes/valor-publico'
 import { Route as RiscoRouteImport } from './routes/risco'
 import { Route as PorQueRouteImport } from './routes/por-que'
 import { Route as ParceirosRouteImport } from './routes/parceiros'
@@ -23,6 +24,11 @@ import { Route as AuditoriaRouteImport } from './routes/auditoria'
 import { Route as AssistenteRouteImport } from './routes/assistente'
 import { Route as IndexRouteImport } from './routes/index'
 
+const ValorPublicoRoute = ValorPublicoRouteImport.update({
+  id: '/valor-publico',
+  path: '/valor-publico',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const RiscoRoute = RiscoRouteImport.update({
   id: '/risco',
   path: '/risco',
@@ -103,6 +109,7 @@ export interface FileRoutesByFullPath {
   '/parceiros': typeof ParceirosRoute
   '/por-que': typeof PorQueRoute
   '/risco': typeof RiscoRoute
+  '/valor-publico': typeof ValorPublicoRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -118,6 +125,7 @@ export interface FileRoutesByTo {
   '/parceiros': typeof ParceirosRoute
   '/por-que': typeof PorQueRoute
   '/risco': typeof RiscoRoute
+  '/valor-publico': typeof ValorPublicoRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -134,6 +142,7 @@ export interface FileRoutesById {
   '/parceiros': typeof ParceirosRoute
   '/por-que': typeof PorQueRoute
   '/risco': typeof RiscoRoute
+  '/valor-publico': typeof ValorPublicoRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -151,6 +160,7 @@ export interface FileRouteTypes {
     | '/parceiros'
     | '/por-que'
     | '/risco'
+    | '/valor-publico'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -166,6 +176,7 @@ export interface FileRouteTypes {
     | '/parceiros'
     | '/por-que'
     | '/risco'
+    | '/valor-publico'
   id:
     | '__root__'
     | '/'
@@ -181,6 +192,7 @@ export interface FileRouteTypes {
     | '/parceiros'
     | '/por-que'
     | '/risco'
+    | '/valor-publico'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -197,10 +209,18 @@ export interface RootRouteChildren {
   ParceirosRoute: typeof ParceirosRoute
   PorQueRoute: typeof PorQueRoute
   RiscoRoute: typeof RiscoRoute
+  ValorPublicoRoute: typeof ValorPublicoRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/valor-publico': {
+      id: '/valor-publico'
+      path: '/valor-publico'
+      fullPath: '/valor-publico'
+      preLoaderRoute: typeof ValorPublicoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/risco': {
       id: '/risco'
       path: '/risco'
@@ -309,6 +329,7 @@ const rootRouteChildren: RootRouteChildren = {
   ParceirosRoute: ParceirosRoute,
   PorQueRoute: PorQueRoute,
   RiscoRoute: RiscoRoute,
+  ValorPublicoRoute: ValorPublicoRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
